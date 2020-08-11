@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v1.0.1 (2020-08-10)
+
+* Fixes a bug where the console output was displaying incorrectly
+* Updates the README with the correct usage info
+
 ## v1.0.0 (2020-07-28)
 
 * Initial commit

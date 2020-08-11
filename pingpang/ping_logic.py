@@ -55,8 +55,8 @@ class Ping():
         end_time = time.perf_counter() - start_time
         latency = round(end_time * 1000, 2)
 
-        output = f"""\n{current_time}\nURL: {self.args.url}\n
-            Status Code: {ping.status_code}\nLatency (ms): {latency}\n"""
+        output = (f'\n{current_time}\nURL: {self.args.url}\n'
+                  f'Status Code: {ping.status_code}\nLatency (ms): {latency}\n')
         print(output)
         return output, current_time, url, ping.status_code, latency
 

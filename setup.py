@@ -10,7 +10,7 @@ REQUIREMENTS = [
 
 setuptools.setup(
     name='ping-pang',
-    version='1.0.0',
+    version='1.0.1',
     description='Ping a URL and output the status code and latency. Save to a log or CSV on an interval.',
     long_description=long_description,
     long_description_content_type="text/markdown",

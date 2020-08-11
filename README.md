@@ -14,7 +14,9 @@ Ping a URL and output the status code and latency. Save to a log or CSV on an in
 
 I got tired of my internet underperforming and wanted to start correlating data across the span of a day to see what was up. Using this script, you can do just that by pinging a URL on an interval (recommended for short periods) or setting this script up on a cronjob (for long periods) and saving the output to a CSV where you can then builds graphs and charts to view your data. 
 
-It should be noted that Ping does not actually ping but instead does a GET request to the specified URL. This means that responses will appear a bit slower than simply pinging the same URL on the command line.
+It should be noted that Ping Pang does not actually ping but instead does a GET request to the specified URL. This means that responses will appear a bit slower than simply pinging the same URL on the command line.
+
+Ping Pang maxes out at `1000` pings in any given run of this tool.
 
 ## Install
 
@@ -26,14 +28,15 @@ pip3 install ping-pang
 
 ```
 Usage:
-    ping --url http://google.com --log ~/test.log --csv ~/test.csv --interval 10
+    ping-pang --url http://google.com --log ~/test.log --csv ~/test.csv --interval 10
 
 Options
-    -h, --help                  Show this help message and exit
-    -u, --url URL               The URL you would like to ping.
-    -i, --interval INTERVAL     The interval to ping the URL again (in seconds). Great to test over a period of time (maxes out to 1000 pings).
-    -l, --log LOG               The path to save the output to a log. Will not save to log if flag is not present.
-    -c, --csv CSV               The path to save the output to a CSV file. Great to build data that can be manipulated easily.
+    -h, --help              show this help message and exit
+    -u URL, --url URL       The URL you would like to ping.
+    -i INTERVAL, --interval INTERVAL
+                            The interval to ping the URL again (in seconds). Great to test over a period of time (maxes out to 1000 pings).
+    -l LOG, --log LOG       The path to save the output to a log. Will not save to log if flag is not present.
+    -c CSV, --csv CSV       The path to save the output to a CSV file. Great to build data that can be manipulated easily.
 ```
 
 ## Development
