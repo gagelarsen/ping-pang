@@ -9,7 +9,7 @@ Ping a URL and output the status code and latency. Save to a log or CSV on an in
 [![PyPi](https://img.shields.io/pypi/v/ping-pang)](https://pypi.org/project/ping-pang)
 [![Licence](https://img.shields.io/github/license/justintime50/ping-pang)](https://opensource.org/licenses/mit-license.php)
 
-<img src="assets/showcase.png">
+<img src="assets/showcase.png" alt="Showcase">
 
 </div>
 
