@@ -5,8 +5,9 @@
 Ping a URL and output the status code and latency. Save to a log or CSV on an interval.
 
 [![Build Status](https://travis-ci.com/Justintime50/ping-pang.svg?branch=master)](https://travis-ci.com/Justintime50/ping-pang)
-[![Pypi](https://img.shields.io/pypi/v/ping-pang)](https://pypi.org/project/ping-pang)
-[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+[![Coverage Status](https://coveralls.io/repos/github/Justintime50/ping-pang/badge.svg?branch=master)](https://coveralls.io/github/Justintime50/ping-pang?branch=master)
+[![PyPi](https://img.shields.io/pypi/v/ping-pang)](https://pypi.org/project/ping-pang)
+[![Licence](https://img.shields.io/github/license/justintime50/ping-pang)](https://opensource.org/licenses/mit-license.php)
 
 <img src="assets/showcase.png">
 
@@ -21,28 +22,42 @@ Ping Pang maxes out at `1000` pings in any given run of this tool.
 ## Install
 
 ```bash
+# Install tool
 pip3 install ping-pang
+
+# Install locally
+make install
+
+# Get Makefile help
+make help
 ```
 
 ## Usage
 
 ```
 Usage:
-    ping-pang --url http://google.com --log ~/test.log --csv ~/test.csv --interval 10
+    ping-pang --url https://www.google.com --log ~/test.log --csv ~/test.csv --interval 10
 
 Options
-    -h, --help              show this help message and exit
-    -u URL, --url URL       The URL you would like to ping.
+    -h, --help            show this help message and exit
+    -u URL, --url URL     The URL you would like to ping.
     -i INTERVAL, --interval INTERVAL
                             The interval to ping the URL again (in seconds). Great to test over a period of time (maxes out to 1000 pings).
-    -l LOG, --log LOG       The path to save the output to a log. Will not save to log if flag is not present.
-    -c CSV, --csv CSV       The path to save the output to a CSV file. Great to build data that can be manipulated easily.
+    -l LOG_FILE, --log_file LOG_FILE
+                            The path to save the output to a log. Will not save to log if flag is not present.
+    -c CSV_FILE, --csv_file CSV_FILE
+                            The path to save the output to a CSV file. Great to build data that can be manipulated easily.
 ```
 
 ## Development
 
 ```bash
-pip3 install -e ."[dev]"
+# Lint the project
+make lint
 
-pylint pingpang/*.py
+# Run tests
+make test
+
+# Run the tool locally
+venv/bin/python pingpang/ping_logic.py --help
 ```
