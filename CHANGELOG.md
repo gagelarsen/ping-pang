@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v1.1.1 (2020-08-16)
+## v1.1.1&2 (2020-08-16)
 
 * Fixing deployment bug
 * Fixed showcase image/tag in README

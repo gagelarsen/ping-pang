@@ -9,7 +9,7 @@ REQUIREMENTS = [
 
 setuptools.setup(
     name='ping-pang',
-    version='1.1.1',
+    version='1.1.2',
     description='Ping a URL and output the status code and latency. Save to a log or CSV on an interval.',  # noqa
     long_description=long_description,
     long_description_content_type="text/markdown",
