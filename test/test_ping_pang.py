@@ -1,6 +1,5 @@
 import unittest
 import unittest.mock
-import pytest
 from datetime import datetime
 from pingpang import ping_logic
 
@@ -46,17 +45,23 @@ Latency (ms): 102.69
         assert result[3] == 200
         assert isinstance(result[4], float)
 
-    @pytest.mark.skip(reason="need to mock generating a CSV file instead of actually creating one")  # noqa
     def test_generate_csv(self):
         """Generate a CSV file with content
         """
-        # TODO: Mock generating a CSV and inserting this content there
-        content = [['2020-08-15 23:12:38.433752',
-                    'http://www.google.com', '200', '102.69']]
-        result = ping_logic.PingPang.generate_csv(
-            'test.csv', content[0][0],
-            content[0][1], content[0][2], content[0][3])
-        assert content == result
+        # TODO: Mock generating a real CSV and inserting this content there
+        timestamp = '2020-08-15 23:12:38.433752'
+        url = 'http://www.google.com'
+        status_code = 200
+        latency = 102.69
+        content = f'{timestamp}, {url}, {status_code}, {latency}'
+        mock_open = unittest.mock.mock_open(read_data=content)
+        with unittest.mock.patch('builtins.open', mock_open):
+            result = ping_logic.PingPang.generate_csv(
+                'test.csv', timestamp, url, status_code, latency)
+        assert timestamp in result[0]
+        assert url in result[0]
+        assert status_code in result[0]
+        assert latency in result[0]
 
 
 if __name__ == '__main__':
