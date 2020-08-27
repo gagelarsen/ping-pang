@@ -9,7 +9,7 @@ REQUIREMENTS = [
 
 setuptools.setup(
     name='ping-pang',
-    version='1.1.2',
+    version='1.1.3',
     description='Ping a URL and output the status code and latency. Save to a log or CSV on an interval.',  # noqa
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -29,6 +29,7 @@ setuptools.setup(
             'pytest-cov >= 2.10.0',
             'coveralls >= 2.1.2',
             'flake8 >= 3.8.0',
+            'mock >= 4.0.0',
         ]
     },
     entry_points={

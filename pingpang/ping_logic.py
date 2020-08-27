@@ -73,7 +73,8 @@ class PingPang():
                     cls.generate_log(log_file, ping[0])
                 if csv_file:
                     cls.generate_csv(
-                        csv_file, ping[1], ping[2], ping[3], ping[4])
+                        csv_file, ping[1], ping[2], ping[3], ping[4]
+                    )
                 count += 1
                 time.sleep(interval)
         else:

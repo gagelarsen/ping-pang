@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.1.3 (2020-08-26)
+
+* Reworked unit tests
+
 ## v1.1.1&2 (2020-08-16)
 
 * Fixing deployment bug
