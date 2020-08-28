@@ -8,7 +8,8 @@ import logging
 
 class PingPangCLI():
     def __init__(self):
-        """Setup CLI args and init the program.
+        """
+        Setup CLI args and init the program.
         """
         parser = argparse.ArgumentParser(
             description='Ping a URL and get back data.'
@@ -53,42 +54,53 @@ class PingPangCLI():
 
     def run(self):
         PingPang.run(
-            self.url,
-            self.interval,
-            self.log_file,
-            self.csv_file,
+            url=self.url,
+            interval=self.interval,
+            log_file=self.log_file,
+            csv_file=self.csv_file,
         )
 
 
 class PingPang():
     @classmethod
-    def run(cls, url, interval, log_file, csv_file):
-        """Run the script that pings a URL
+    def run(cls, url, interval=None, max_runs=1000, log_file=None, csv_file=None):
         """
-        if interval:
-            count = 0
-            while count < 1000:
-                ping = cls.ping(url)
-                if log_file:
-                    cls.generate_log(log_file, ping[0])
-                if csv_file:
-                    cls.generate_csv(
-                        csv_file, ping[1], ping[2], ping[3], ping[4]
-                    )
-                count += 1
-                time.sleep(interval)
-        else:
+        Run the script that pings a URL
+
+        Args:
+            url (str): The url that you want to ping.
+            interval (int): The amount of time in between requests.
+            max_runs (int): The maximum number of repeat requests.
+            log_file (str): Path to a file to log info.
+            csv_file (str): Path to a file to log statistical info.
+        """
+        count = 0
+        ping = None
+        while count < max_runs:
             ping = cls.ping(url)
             if log_file:
                 cls.generate_log(log_file, ping[0])
             if csv_file:
-                cls.generate_csv(csv_file, ping[1], ping[2], ping[3], ping[4])
+                cls.generate_csv(
+                    csv_file, ping[1], ping[2], ping[3], ping[4]
+                )
+            count += 1
+            if interval is None:
+                break
+            time.sleep(interval)
 
         return ping
 
     @classmethod
     def ping(cls, url):
-        """Ping a URL and return the output.
+        """
+        Ping a URL and return the output.
+
+        Args:
+            url (str): The url to ping.
+
+        Returns:
+            # TODO: Explain the return.
         """
         current_time = datetime.now()
         start_time = time.perf_counter()
@@ -108,7 +120,16 @@ class PingPang():
 
     @ classmethod
     def generate_log(cls, log_file, output):
-        """Save the output to a log by appending the data.
+        """
+        Save the output to a log by appending the data.
+
+        Args:
+            log_file: Path to the log file.
+            output: The data to be written to the log file.
+            # TODO: Consider adding a flag for append vs. new file?
+
+        Returns:
+            The output?  # TODO: Probably don't need to return this... Since you are already passing it in.
         """
         with open(log_file, 'a') as log_file:
             log_file.write(output)
@@ -118,7 +139,18 @@ class PingPang():
 
     @ classmethod
     def generate_csv(cls, csv_file, current_time, url, status_code, latency):
-        """Save the output to a CSV and format correctly.
+        """
+        Save the output to a CSV and format correctly.
+
+        Args:
+            csv_file (str): Path to csv file.
+            current_time: The current time.
+            url (str): URL being pinged.
+            status_code: The status code returned by the request.
+            latency:
+
+        Returns:
+            # TODO: Explain the return.. does it need to be returned?
         """
         row = [[current_time, url, status_code, latency], ]
 
@@ -130,9 +162,11 @@ class PingPang():
         return row
 
 
-def main():
-    PingPangCLI().run()
+# Did it this way so you get the effect you want with main, but makes
+# It easier for testing.
+def run_script(name):
+    if name == "__main__":
+        PingPangCLI().run()
 
 
-if __name__ == "__main__":
-    main()
+run_script(__name__)

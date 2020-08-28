@@ -34,7 +34,7 @@ setuptools.setup(
     },
     entry_points={
         'console_scripts': [
-            'ping-pang=pingpang.ping_logic:main'
+            'ping-pang=pingpang.ping_logic.PingPangCLI'
         ]
     },
     python_requires='>=3.6',
